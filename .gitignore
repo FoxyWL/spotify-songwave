@@ -1,0 +1,5 @@
+node_modules/
+*.pem
+.DS_Store
+songwave-extension.zip
+test/e2e/out/

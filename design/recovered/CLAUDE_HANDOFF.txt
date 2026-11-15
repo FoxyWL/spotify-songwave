@@ -1,0 +1,32 @@
+MY WAVE — DYNAMIC UI HANDOFF
+
+Read DESIGN_SPEC.md and README.md before implementation.
+
+Files:
+- index.html / styles.css: approved visual prototype and responsive layout.
+- app.js: functional demo interactions and example state transitions.
+- assets/: original placeholder SVG artwork.
+
+The current prototype is deliberately dynamic. Preserve and reuse its behavior instead of replacing it with static mockups:
+- render current track and upcoming queue from state;
+- play/pause, next/previous, track selection and simulated progress;
+- like/dislike/less-like/save feedback;
+- tuning presets, discovery slider, artist exclusions and queue re-ranking;
+- queue modal, settings modal, taste details, track action menu;
+- search, saved-tracks view, local playlist creation, shuffle/repeat and volume UI;
+- localStorage persistence for demo preferences.
+
+Critical boundary: demo playback is only a visual clock. No sound is produced and no Spotify API is called. Do not mistake the local catalog, localStorage state, or example recommendation ranking for real Spotify data.
+
+Implementation task:
+1. Keep this visual hierarchy, spacing, typography, color system, and interaction design.
+2. Introduce typed application models and a service/adapter layer for Spotify auth, catalog metadata, playback state, saved tracks, and user feedback.
+3. Replace the demo catalog and demo persistence with supported Spotify data/actions where currently permitted.
+4. Connect playback controls to the user's existing Spotify playback context / supported Web Playback SDK integration. Do not create a competing playback engine.
+5. Connect feedback and tuning controls to a real recommendation service. If Spotify does not expose required signals/endpoints, implement a transparent alternative and document its limitations.
+6. Scope CSS to an extension root or Shadow DOM to avoid collisions with Spotify Web.
+7. Retain loading, empty, unavailable, permission, rate-limit, and error states.
+
+Do not use undocumented/private Spotify endpoints, scrape the Spotify UI, bypass Premium requirements, or promise unavailable capabilities. Verify current Spotify Developer Terms and API access before coding against an endpoint.
+
+The prototype is ready to be used as the front-end reference. Its data and simulated playback must not be shipped as if they were real Spotify functionality.

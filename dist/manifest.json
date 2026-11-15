@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Songwave — Моя волна",
+  "short_name": "Songwave",
+  "version": "0.1.0",
+  "description": "Бесконечная персональная волна для Spotify Web Player. Звук играет Spotify, Songwave подбирает и учится на твоих лайках и пропусках.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArB2pb4+Rsxy6XnZkDTbgY3j474qpyS/AvbEXjjJQCtvCAhEgZ1nlvv2wt44e7OkHyN3megby9bbZ8aGx7kMYSnT38n1/R+Jb697/f6SWwTqD3SjFWE3lhrf8qs/AtC/eaLY1Jnr9EN3SnxQHcOtTgsmsuU2O01jRA4C44IT01L+0g/gHt2Y02Oz7cpY7mmvGO1x5rXEP5q+OFZBJZcfbnneLrpFe+Qmq3XS4LJZXRQ53W9h0nfD1xfZ4Advksr4lCpWF9sy+Dwa1NDlFgpSUtD0CwPYOn2i2rotyqwgUB1xIoX9pNTG7NoH8QXnXic8QUWuOvOM7CAGPZpXH9vP5EQIDAQAB",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Songwave: открыть Мою волну",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://api.spotify.com/*",
+    "https://accounts.spotify.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://open.spotify.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/*"
+      ],
+      "matches": [
+        "https://open.spotify.com/*"
+      ]
+    }
+  ],
+  "commands": {
+    "toggle-wave": {
+      "suggested_key": {
+        "default": "Alt+Shift+W"
+      },
+      "description": "Открыть или закрыть Мою волну"
+    }
+  }
+}
